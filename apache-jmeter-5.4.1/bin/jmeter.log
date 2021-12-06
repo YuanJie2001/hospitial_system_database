@@ -1,0 +1,24 @@
+2021-11-22 21:31:09,371 INFO o.a.j.u.JMeterUtils: Setting Locale to en_EN
+2021-11-22 21:31:09,390 INFO o.a.j.JMeter: Loading user properties from: user.properties
+2021-11-22 21:31:09,391 INFO o.a.j.JMeter: Loading system properties from: system.properties
+2021-11-22 21:31:09,401 INFO o.a.j.JMeter: Copyright (c) 1998-2021 The Apache Software Foundation
+2021-11-22 21:31:09,401 INFO o.a.j.JMeter: Version 5.4.1
+2021-11-22 21:31:09,401 INFO o.a.j.JMeter: java.version=17
+2021-11-22 21:31:09,401 INFO o.a.j.JMeter: java.vm.name=OpenJDK 64-Bit Server VM
+2021-11-22 21:31:09,402 INFO o.a.j.JMeter: os.name=Windows 10
+2021-11-22 21:31:09,402 INFO o.a.j.JMeter: os.arch=amd64
+2021-11-22 21:31:09,402 INFO o.a.j.JMeter: os.version=10.0
+2021-11-22 21:31:09,402 INFO o.a.j.JMeter: file.encoding=GBK
+2021-11-22 21:31:09,402 INFO o.a.j.JMeter: java.awt.headless=null
+2021-11-22 21:31:09,402 INFO o.a.j.JMeter: Max memory     =1073741824
+2021-11-22 21:31:09,402 INFO o.a.j.JMeter: Available Processors =8
+2021-11-22 21:31:09,411 INFO o.a.j.JMeter: Default Locale=English (EN)
+2021-11-22 21:31:09,411 INFO o.a.j.JMeter: JMeter  Locale=English (EN)
+2021-11-22 21:31:09,411 INFO o.a.j.JMeter: JMeterHome=C:\apache-jmeter-5.4.1
+2021-11-22 21:31:09,411 INFO o.a.j.JMeter: user.dir  =C:\apache-jmeter-5.4.1\bin
+2021-11-22 21:31:09,412 INFO o.a.j.JMeter: PWD       =C:\apache-jmeter-5.4.1\bin
+2021-11-22 21:31:15,456 INFO o.a.j.JMeter: IP: 169.254.29.103 Name: DESKTOP-7L10CFT FullName: DESKTOP-7L10CFT
+2021-11-22 21:31:15,570 INFO o.a.j.JMeter: Setting LAF to: com.github.weisj.darklaf.DarkLaf:com.github.weisj.darklaf.theme.DarculaTheme
+2021-11-22 21:31:16,006 INFO o.a.j.JMeter: Loaded icon properties from org/apache/jmeter/images/icon.properties
+2021-11-22 21:31:28,458 INFO o.a.j.u.JMeterUtils: Setting Locale to zh_CN
+2021-11-22 21:31:36,633 INFO o.a.j.u.JMeterUtils: Setting Locale to zh_CN
