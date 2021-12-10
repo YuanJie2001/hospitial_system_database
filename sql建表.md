@@ -9,19 +9,19 @@ alter database hospital_information CHARACTER SET utf8mb4 COLLATE utf8mb4_unicod
 drop table register;
 create table register -- 中间表patient_doctor
 (
-    r_num        varchar(10) primary key comment '挂号编号', -- 挂号编号
+    r_num        int unsigned not null primary key auto_increment comment '挂号编号', -- 挂号编号
     r_patient_id varchar(20) not null comment '病人身份证号',  -- 病人编号
     r_P_name     varchar(20) not null comment '病人姓名',
     r_sex        varchar(2)  not null comment '性别',-- 性别
     r_dept       varchar(20) not null comment '挂号科室',-- 挂号部门
     r_name       varchar(10) not null comment '医生姓名',-- 医生姓名
-    is_delete    tinyint     not null default 0 comment '0为未删除 1为已删除',
+    is_delete    tinyint unsigned  not null default 0 comment '0为未删除 1为已删除',
     create_time  datetime             DEFAULT CURRENT_TIMESTAMP comment '创建字段的时间',
     update_time  datetime             DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP comment '修改字段的时间'
 )CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
-INSERT INTO register(r_num, r_patient_id,r_P_name, r_sex, r_dept, r_name)
-VALUES ('222', '411282xxxxxxx1182', '病人1','女', '肛肠科', '尘思宇');
+INSERT INTO register(r_patient_id,r_P_name, r_sex, r_dept, r_name)
+VALUES ( '411282xxxxxxx1182', '病人1','女', '肛肠科', '尘思宇');
 SELECT *
 from register
 where r_patient_id = '41128220230304554X';
@@ -53,14 +53,14 @@ from register;
 select *
 from register
 where register.is_delete = 0;
-insert into register(r_num, r_patient_id,r_P_name, r_sex, r_dept, r_name)
-values ('101', '411282xxxxxxxx5555','病人1', '男', '牙科', '王渊洁');
-insert into register(r_num, r_patient_id,r_P_name, r_sex, r_dept, r_name)
-values ('102', '421282xxxxxxxx5554', '病人2','女', '妇产科', '莫家里昂');
-insert into register(r_num, r_patient_id, r_P_name,r_sex, r_dept, r_name)
-values ('103', '251381xxxxxxxx5553','病人3', '男', '肛肠科', '尘思语');
-insert into register(r_num, r_patient_id,r_P_name, r_sex, r_dept, r_name)
-values ('104', '315213xxxxxxxx5552','病人4', '女', '呼吸道科', '杰瑞哲');
+insert into register( r_patient_id,r_P_name, r_sex, r_dept, r_name)
+values ( '411282xxxxxxxx5555','病人1', '男', '牙科', '王渊洁');
+insert into register( r_patient_id,r_P_name, r_sex, r_dept, r_name)
+values ('421282xxxxxxxx5554', '病人2','女', '妇产科', '莫家里昂');
+insert into register(r_patient_id, r_P_name,r_sex, r_dept, r_name)
+values ('251381xxxxxxxx5553','病人3', '男', '肛肠科', '尘思语');
+insert into register(r_patient_id,r_P_name, r_sex, r_dept, r_name)
+values ('315213xxxxxxxx5552','病人4', '女', '呼吸道科', '杰瑞哲');
 
 create view register_view as
 select *
@@ -69,7 +69,7 @@ where register.is_delete = 0;
 # 医师信息
 create table doctor
 (
-    d_octor_id  varchar(10) primary key comment '医生编号',
+    d_octor_id  int unsigned not null primary key comment '医生编号',
     d_name      varchar(20)         not null comment '医生姓名',
     d_sex       varchar(2)          not null comment '医生性别',
     d_age       tinyint(4) unsigned not null comment '医生年龄',
@@ -107,12 +107,7 @@ select *
 from doctor
 where doctor.is_delete = 0;
 # 病人信息
-alter table patient
-    add is_delete tinyint not null default 0;
-alter table patient
-    add create_time datetime DEFAULT CURRENT_TIMESTAMP;
-alter table patient
-    add update_time datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP;
+
 create table patient
 (
     p_atient_id varchar(20) primary key comment '病人身份证号',
@@ -232,14 +227,15 @@ VALUES ('1000236', '杜仲补天素丸', 28.00, '821', 'A-6-291', '2021-09-01', 
 
 INSERT INTO drugs(drug_id, drug_name, drug_price, drug_quantity, drug_storage, drug_date, usefull_life)
 VALUES ('1000237', '长生不老丹', 9999.00, '821', 'C-8-291', '2021-09-01', '2022-09-01');
-
+select * from drugs where 1=1 and drug_id='1000237' and is_delete=0;
 UPDATE drugs
 SET drug_name = '聪明草'
-WHERE drug_id = '1000237';
+WHERE drug_id = '1000237' and is_delete=0 and 1=1;
 
 UPDATE drugs
 SET IS_DELETE=1
 WHERE drug_name = '聪明草';
+select * from drugs where 1=1 and drug_id='1000237' and is_delete=0;
 SELECT drug_name, sum(drug_quantity)
 FROM drug_view
 GROUP BY drug_name;
@@ -283,8 +279,8 @@ from charge;
 drop table PGM;
 create table PGM -- 中间表 drug_charge
 (
-    t_id        varchar(10) comment '收费编号',
-    drug_id     varchar(10) comment '药品编号',
+    t_id        varchar(10) not null comment '收费编号',
+    drug_id     varchar(10) not null comment '药品编号',
     quantity    int unsigned      not null comment '数量',
     price       decimal unsigned not null comment '价格',
     is_delete   tinyint          not null default 0,
@@ -318,7 +314,7 @@ create table recipel -- 中间表 doctor_drug
     doctor_id    varchar(10)  not null comment '医生编号',
     drug_id      varchar(10)  not null comment '药品编号',
     patient_name varchar(20)  not null comment '病人姓名',
-    is_delete    tinyint      not null default 1,
+    is_delete    tinyint      not null default 0,
     create_time  datetime              DEFAULT CURRENT_TIMESTAMP,
     update_time  datetime              DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 )CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
@@ -394,9 +390,10 @@ end
 $$ -- 自定义触发器结束
 delimiter ;
 drop trigger recipel_update;
-
+select * from drugs where drug_id='1000226' and is_delete=0 and 1=1;
 INSERT INTO recipel(DOCTOR_ID, COUNT, DRUG_ID, PATIENT_NAME)
 VALUES ('005', '2', '1000226', '病人6');
+select * from drugs where drug_id='1000226' and is_delete=0 and 1=1;
 
 
 # 药品入库操作 触发器
@@ -405,7 +402,7 @@ VALUES ('005', '2', '1000226', '病人6');
 drop trigger drugs_trigger;
 DELIMITER $$ -- 自定义结束符号
 create trigger drugs_trigger
-    AFTER UPDATE
+    BEFORE UPDATE
     ON drugs
     FOR EACH ROW
 BEGIN
@@ -423,11 +420,11 @@ BEGIN
         SET NEW.drug_storage = OLD.drug_storage;
         SET NEW.drug_date = OLD.drug_date;
         SET NEW.usefull_life = OLD.usefull_life;
-        REPLACE INTO  drugs(drug_id, drug_name, drug_price, drug_quantity, drug_storage, drug_date, usefull_life)
-        VALUES (NEW.drug_id,NEW.drug_name,NEW.drug_price,NEW.drug_quantity,NEW.drug_storage,NEW.drug_date,NEW.usefull_life);
+#         REPLACE INTO  drugs(drug_id, drug_name, drug_price, drug_quantity, drug_storage, drug_date, usefull_life)
+#         VALUES (NEW.drug_id,NEW.drug_name,NEW.drug_price,NEW.drug_quantity,NEW.drug_storage,NEW.drug_date,NEW.usefull_life);
     ELSE#必须是增强写法Replace into   这里的这种操作相当于sql server的instead of
         REPLACE INTO  drugs(drug_id, drug_name, drug_price, drug_quantity, drug_storage, drug_date, usefull_life)
-    values (NEW.drug_id,NEW.drug_name,NEW.drug_price,NEW.drug_quantity,NEW.drug_storage,NEW.drug_date,NEW.usefull_life);
+        values (NEW.drug_id,NEW.drug_name,NEW.drug_price,NEW.drug_quantity,NEW.drug_storage,NEW.drug_date,NEW.usefull_life);
     END IF;
 END
 $$ -- 自定义触发器结束
@@ -435,10 +432,10 @@ DELIMITER ;
 
 #   存在主键约束,所以插入相同数据必报错
 UPDATE drugs
-SET drug_id='1314251', drug_name='阳春白雪', drug_price=883.00, drug_quantity=200, drug_storage='F-4-291', drug_date='2021-09-01', usefull_life='2022-09-01'
-WHERE drug_id='1314251';
+SET drug_id='1000210', drug_name='黄连羊肝丸', drug_price=883.00, drug_quantity=200, drug_storage='F-4-291', drug_date='2021-09-01', usefull_life='2022-09-01'
+WHERE drug_id='1000210';
 
-select * from drugs where drug_id='1314251';
+select * from drugs where drug_id='1000210' and is_delete=0 and 1=1;
 
 # 存储过程
 drop procedure count_people_date;
@@ -448,7 +445,7 @@ CREATE PROCEDURE count_people_date(
 #     IN @begin_date datetime,  这样写是错误的
     IN begin_date datetime,
     IN end_date datetime
-    )
+)
 BEGIN
     SELECT r_dept '科室',count(*) '问诊人数'
     FROM register
@@ -457,9 +454,7 @@ BEGIN
 end $$
 DELIMITER ;
 
-CALL count_people_date('2021-12-04','2021-12-05');
-
-
+CALL count_people_date('2021-12-10','2021-12-11');
 
 ```
 
