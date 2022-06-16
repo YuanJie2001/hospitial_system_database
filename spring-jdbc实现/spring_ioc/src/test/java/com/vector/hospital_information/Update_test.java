@@ -33,7 +33,7 @@ public class Update_test {
         /**
          * 测试增添数据
          */
-        String sql1 = "INSERT INTO recipel(doctor_id,drug_id,count,patient_name) VALUES (?,?,?,?,?);";
+        String sql1 = "INSERT INTO recipel(doctor_id,drug_id,count,patient_name) VALUES (?,?,?,?);";
         modify.update(sql1,"001", "100023", "2","病人1");
 
         /**
