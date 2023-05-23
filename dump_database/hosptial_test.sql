@@ -23,17 +23,17 @@ DROP TABLE IF EXISTS `charge`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `charge` (
-  `toll_id` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '收费员编号',
-  `t_name` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '收费员姓名',
-  `patient_id` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '病人编号',
-  `drug_id` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '药品编号',
+  `toll_id` varchar(10) COLLATE utf NOT NULL COMMENT '收费员编号',
+  `t_name` varchar(10) COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '收费员姓名',
+  `patient_id` varchar(20) COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '病人编号',
+  `drug_id` varchar(10) COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '药品编号',
   `drug_quantity` int unsigned NOT NULL COMMENT '药品数量',
   `amount` decimal(10,0) NOT NULL COMMENT '金额',
   `is_delete` tinyint NOT NULL DEFAULT '0' COMMENT '0为未删除 1为已删除',
   `create_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT '创建字段的时间',
   `update_time` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改字段的时间',
   PRIMARY KEY (`toll_id`,`patient_id`,`drug_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -75,17 +75,17 @@ DROP TABLE IF EXISTS `doctor`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `doctor` (
   `d_octor_id` int unsigned NOT NULL COMMENT '医生编号',
-  `d_name` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '医生姓名',
-  `d_sex` varchar(2) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '医生性别',
+  `d_name` varchar(20) COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '医生姓名',
+  `d_sex` varchar(2) COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '医生性别',
   `d_age` tinyint unsigned NOT NULL COMMENT '医生年龄',
-  `d_dept` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '科室',
-  `d_tel` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '电话',
+  `d_dept` varchar(50) COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '科室',
+  `d_tel` varchar(20) COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '电话',
   `is_jobing` tinyint unsigned NOT NULL DEFAULT '1' COMMENT '0为医生不在岗',
   `is_delete` tinyint NOT NULL DEFAULT '0',
   `create_time` datetime DEFAULT CURRENT_TIMESTAMP,
   `update_time` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`d_octor_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -127,18 +127,18 @@ DROP TABLE IF EXISTS `drugs`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `drugs` (
-  `drug_id` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '药品编号',
-  `drug_name` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '药品名称',
+  `drug_id` varchar(10) COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '药品编号',
+  `drug_name` varchar(50) COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '药品名称',
   `drug_price` decimal(10,0) unsigned NOT NULL COMMENT '药品价格',
   `drug_quantity` bigint unsigned NOT NULL COMMENT '药品数量',
-  `drug_storage` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '存储位置',
+  `drug_storage` varchar(50) COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '存储位置',
   `drug_date` datetime NOT NULL COMMENT '生产日期',
   `usefull_life` datetime NOT NULL COMMENT '有效期',
   `is_delete` tinyint NOT NULL DEFAULT '0' COMMENT '0为未删除 1为已删除',
   `create_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT '创建字段的时间',
   `update_time` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改字段的时间',
   PRIMARY KEY (`drug_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -159,17 +159,17 @@ DROP TABLE IF EXISTS `patient`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `patient` (
-  `p_atient_id` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '病人身份证号',
-  `p_name` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '病人姓名',
+  `p_atient_id` varchar(20) COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '病人身份证号',
+  `p_name` varchar(20) COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '病人姓名',
   `p_age` tinyint unsigned NOT NULL COMMENT '病人年龄',
-  `p_sex` varchar(2) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '病人性别',
-  `p_tel` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '病人电话',
-  `p_inf` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '病例',
+  `p_sex` varchar(2) COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '病人性别',
+  `p_tel` varchar(20) COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '病人电话',
+  `p_inf` varchar(50) COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '病例',
   `is_delete` tinyint NOT NULL DEFAULT '0' COMMENT '0为未删除 1为已删除',
   `create_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT '创建字段的时间',
   `update_time` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改字段的时间',
   PRIMARY KEY (`p_atient_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -210,14 +210,14 @@ DROP TABLE IF EXISTS `pay`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `pay` (
-  `patient_id` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '病人编号',
-  `t_id` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '收费编号',
+  `patient_id` varchar(20) COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '病人编号',
+  `t_id` varchar(10) COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '收费编号',
   `price` decimal(10,0) NOT NULL COMMENT '价格',
   `is_delete` tinyint NOT NULL DEFAULT '0' COMMENT '0为未删除 1为已删除',
   `create_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT '创建字段的时间',
   `update_time` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改字段的时间',
   PRIMARY KEY (`patient_id`,`t_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -255,15 +255,15 @@ DROP TABLE IF EXISTS `pgm`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `pgm` (
-  `t_id` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '收费编号',
-  `drug_id` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '药品编号',
+  `t_id` varchar(10) COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '收费编号',
+  `drug_id` varchar(10) COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '药品编号',
   `quantity` int unsigned NOT NULL COMMENT '数量',
   `price` decimal(10,0) unsigned NOT NULL COMMENT '价格',
   `is_delete` tinyint NOT NULL DEFAULT '0',
   `create_time` datetime DEFAULT CURRENT_TIMESTAMP,
   `update_time` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`t_id`,`drug_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -304,14 +304,14 @@ DROP TABLE IF EXISTS `recipel`;
 CREATE TABLE `recipel` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
   `count` int unsigned NOT NULL COMMENT '数量',
-  `doctor_id` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '医生编号',
-  `drug_id` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '药品编号',
-  `patient_name` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '病人姓名',
+  `doctor_id` varchar(10) COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '医生编号',
+  `drug_id` varchar(10) COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '药品编号',
+  `patient_name` varchar(20) COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '病人姓名',
   `is_delete` tinyint NOT NULL DEFAULT '0',
   `create_time` datetime DEFAULT CURRENT_TIMESTAMP,
   `update_time` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -333,16 +333,16 @@ DROP TABLE IF EXISTS `register`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `register` (
   `r_num` int unsigned NOT NULL AUTO_INCREMENT COMMENT '挂号编号',
-  `r_patient_id` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '病人身份证号',
-  `r_P_name` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '病人姓名',
-  `r_sex` varchar(2) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '性别',
-  `r_dept` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '挂号科室',
-  `r_name` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '医生姓名',
+  `r_patient_id` varchar(20) COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '病人身份证号',
+  `r_P_name` varchar(20) COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '病人姓名',
+  `r_sex` varchar(2) COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '性别',
+  `r_dept` varchar(20) COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '挂号科室',
+  `r_name` varchar(10) COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '医生姓名',
   `is_delete` tinyint unsigned NOT NULL DEFAULT '0' COMMENT '0为未删除 1为已删除',
   `create_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT '创建字段的时间',
   `update_time` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改字段的时间',
   PRIMARY KEY (`r_num`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
