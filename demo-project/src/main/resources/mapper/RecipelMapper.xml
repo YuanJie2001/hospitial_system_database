@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.vector.mapper.RecipelMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.vector.entity.Recipel">
+        <id column="id" property="id" />
+        <result column="count" property="count" />
+        <result column="doctor_id" property="doctorId" />
+        <result column="drug_id" property="drugId" />
+        <result column="patient_name" property="patientName" />
+        <result column="is_delete" property="isDelete" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, count, doctor_id, drug_id, patient_name, is_delete, create_time, update_time
+    </sql>
+
+</mapper>

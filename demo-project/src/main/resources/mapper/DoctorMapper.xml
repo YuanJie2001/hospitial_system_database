@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.vector.mapper.DoctorMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.vector.entity.Doctor">
+        <id column="d_octor_id" property="dOctorId" />
+        <result column="d_name" property="dName" />
+        <result column="d_sex" property="dSex" />
+        <result column="d_age" property="dAge" />
+        <result column="d_dept" property="dDept" />
+        <result column="d_tel" property="dTel" />
+        <result column="is_jobing" property="isJobing" />
+        <result column="is_delete" property="isDelete" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        d_octor_id, d_name, d_sex, d_age, d_dept, d_tel, is_jobing, is_delete, create_time, update_time
+    </sql>
+
+</mapper>

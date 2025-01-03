@@ -1,0 +1,43 @@
+server:
+  port: 8081
+spring:
+  # 配置hikari数据源 1.导入依赖 2.配置数据源信息 3.配置druid监控
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://${MYSQL_HOST:127.0.0.1}:${MYSQL_PORT:3306}/${MYSQL_DB:hospital}?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&serverTimezone=Asia/Shanghai&rewriteBatchedStatements=true&useCursorFetch=true&allowMultiQueries=true
+    username: ${MYSQL_USER:root}
+    password: ${MYSQL_PWD:123456}
+    hikari:
+      #连接池名
+      pool-name: DateHikariCP
+      #最小空闲连接数
+      minimum-idle: 5
+      # 空闲连接存活最大时间，默认600000（10分钟）
+      idle-timeout: 60000
+      # 连接池最大连接数，默认是10 连接池大小标准是2*核心数+磁盘数
+      maximum-pool-size: 10
+      # 此属性控制从池返回的连接的默认自动提交行为,默认值：true
+      auto-commit: true
+      # 此属性控制池中连接的最长生命周期，值0表示无限生命周期，默认1800000即30分钟
+      max-lifetime: 60000
+      # 数据库连接超时时间,默认30秒，即30000
+      connection-timeout: 10000
+      connection-test-query: SELECT 1
+      # 连接是否被空闲连接回收器（如果有）所检测
+      validation-timeout: 3000
+
+# 配置mybatis-plus
+mybatis-plus:
+  mapper-locations: classpath:/mapper/*.xml #mapper文件路径
+  type-aliases-package: com.vector.entity #实体类路径
+  configuration:
+    map-underscore-to-camel-case: true #开启驼峰命名
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #打印sql
+  global-config:
+    db-config:
+      # 逻辑删除配置
+      logic-delete-value: 1 #逻辑删除值
+      logic-not-delete-value: 0 #逻辑未删除值
+      logic-delete-field: isDelete # 逻辑删除字段
+      id-type: assign_id # 主键类型
